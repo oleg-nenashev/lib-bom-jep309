@@ -1,2 +1,3 @@
 _extends: .github
-tag-template: annotation-indexer-$NEXT_MINOR_VERSION
+tag-template: bom-jep309-$NEXT_MINOR_VERSION
+version-template: $MAJOR.$MINOR-alpha-$PATCH
