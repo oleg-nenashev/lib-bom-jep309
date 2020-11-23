@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jenkins-ci</groupId>
+    <artifactId>jenkins</artifactId>
+    <version>1.60</version>
+    <relativePath />
+  </parent>
+
+  <groupId>io.jenkins.tools.bom.jep309</groupId>
+  <artifactId>bom-jep309</artifactId>
+  <name>Jenkins JEP-309: BOM Library</name>
+  <version>1.0-alpha-1-SNAPSHOT</version>
+  <description>Java library implementation for Jenkins JEP-309: Bill of Materials</description>
+
+  <properties>
+    <java.level>8</java.level>
+    <fasterxml.jackson.core.version>2.11.3</fasterxml.jackson.core.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${fasterxml.jackson.core.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${fasterxml.jackson.core.version}</version>
+    </dependency>
+     <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-yaml</artifactId>
+      <version>2.11.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.spotbugs</groupId>
+      <artifactId>spotbugs-annotations</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+            <execution>
+                <id>display-info</id>
+                <configuration>
+                    <rules>
+                        <enforceBytecodeVersion>
+                            <excludes combine.children="append">
+                                <exclude>com.fasterxml.jackson.core:jackson-core</exclude>
+                                <exclude>com.fasterxml.jackson.core:jackson-annotations</exclude>
+                                <exclude>com.fasterxml.jackson.core:jackson-databind</exclude>
+                                <exclude>com.fasterxml.jackson.dataformat:jackson-dataformat-yaml</exclude>
+                            </excludes>
+                        </enforceBytecodeVersion>
+                    </rules>
+                </configuration>
+            </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <scm>
+    <connection>scm:git:git://github.com/jenkinsci/lib-${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/lib-${project.artifactId}.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://jenkins-ci.org/mit-license</url>
+    </license>
+  </licenses>
+
+</project>
