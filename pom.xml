@@ -16,7 +16,7 @@
 
   <properties>
     <java.level>8</java.level>
-    <fasterxml.jackson.core.version>2.11.3</fasterxml.jackson.core.version>
+    <fasterxml.jackson.core.version>2.14.2</fasterxml.jackson.core.version>
   </properties>
 
   <dependencies>
